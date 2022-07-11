@@ -40,7 +40,7 @@ defmodule ChatWeb.RoomLive do
   @impl true
   def handle_info(%{event: "new-message", payload: message},socket) do
 
-      {:noreply, assign(socket,messages: [message])}
+      {:noreply, assign(socket, messages: [message])}
   end
 
   @impl true
@@ -64,7 +64,7 @@ defmodule ChatWeb.RoomLive do
     {:noreply, assign(socket, messages: join_messages ++ leave_messages,user_list: user_list)}
   end
 
-  @spec display_message(%{:content => any, :uuid => any, optional(any) => any}) :: {:safe, [...]}
+
   def display_message(%{type: :system, uuid: uuid,content: content}) do
     ~E"""
     <p id="<%= uuid %>"><em><%= content %></em></p>
